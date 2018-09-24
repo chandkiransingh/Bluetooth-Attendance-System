@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bcg"
+    tools:context="com.example.ck.minorlayout.attandance4">
+
+    <Button
+        android:id="@+id/btnONOFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="66dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape"
+        android:text="ON/OFF"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnFindUnpairedDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/btnONOFF"
+        android:layout_marginStart="57dp"
+        android:background="@drawable/shape"
+        android:onClick="btnDiscover"
+        android:padding="8dp"
+        android:text="Start Attandance"
+        android:textColor="@android:color/white" />
+
+    <ListView
+        android:id="@+id/lvNewDevices"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/borders"
+        android:divider="#FFCC00"
+        android:dividerHeight="2dp" />
+
+    <ListView
+        android:id="@+id/savedDevices"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/lvNewDevices"
+        android:layout_marginStart="-10dp"
+        android:layout_toEndOf="@+id/lvNewDevices"
+        android:background="@drawable/borders"
+        android:layout_weight="1"
+        android:divider="#FFCC00"
+        android:dividerHeight="2dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/savedDevices"
+        android:layout_alignTop="@+id/textView2"
+        android:background="@drawable/rectangle"
+        android:padding="10dp"
+        android:text="Students List"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/lvNewDevices"
+        android:layout_marginTop="72dp"
+        android:background="@drawable/rectangle"
+        android:padding="10dp"
+        android:text="Nearby Students"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

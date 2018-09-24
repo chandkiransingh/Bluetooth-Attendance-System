@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bcg"
+    tools:context="com.example.ck.minorlayout.register">
+
+    <Button
+        android:id="@+id/btnONOFF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="ON/OFF"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/shape"/>
+
+    <Button
+        android:id="@+id/btnDiscoverable_on_off"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="btnEnableDisable_Discoverable"
+        android:text="Enable Discoverable"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/shape"/>
+
+    <Button
+        android:id="@+id/btnFindUnpairedDevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="btnDiscover"
+        android:text="Discover"
+        android:layout_margin="10dp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/shape"/>
+
+    <ListView
+        android:id="@+id/lvNewDevices"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_margin="10dp"/>
+</RelativeLayout>
