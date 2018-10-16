@@ -9,17 +9,25 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.firebase.FirebaseError;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class register extends AppCompatActivity {
     private static final String TAG = "register";
@@ -29,10 +37,11 @@ public class register extends AppCompatActivity {
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
-
+    DataSnapshot dataSnapshot;
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Device Name");
+    DatabaseReference myRef = database.getReference();
+
    // DatabaseReference myRef2 = database.getReference("Device Address");
 
     // Create a BroadcastReceiver for ACTION_FOUND
@@ -114,7 +123,7 @@ public class register extends AppCompatActivity {
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
             if (action.equals(BluetoothDevice.ACTION_FOUND)){
-                BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
+                final BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
                 mBTDevices.add(device);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
                 mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
@@ -122,9 +131,9 @@ public class register extends AppCompatActivity {
                 HashMap<String ,String> map = new HashMap<>();
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
-                myRef.push().setValue(map);
-              //  myRef.child(device.getName()).push().setValue(device.getAddress());
-            }
+                myRef.child(device.getAddress()).setValue(device.getName());
+
+                }
         }
     };
 
