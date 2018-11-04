@@ -1,12 +1,13 @@
 package com.example.ck.minorlayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class register3 extends AppCompatActivity {
+public class register3 extends Activity {
 
     Button sub1,sub2;
     @Override

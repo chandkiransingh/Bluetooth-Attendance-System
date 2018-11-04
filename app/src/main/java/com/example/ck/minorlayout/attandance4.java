@@ -1,6 +1,7 @@
 package com.example.ck.minorlayout;
 
 import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class attandance4 extends AppCompatActivity {
+public class attandance4 extends Activity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -268,7 +269,7 @@ public class attandance4 extends AppCompatActivity {
      * NOTE: This will only execute on versions > LOLLIPOP because it is not needed otherwise.
      */
     private void checkBTPermissions() {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M)
         {
             int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
             permissionCheck += this.checkSelfPermission("Manifest.permission.ACCESS_COARSE_LOCATION");

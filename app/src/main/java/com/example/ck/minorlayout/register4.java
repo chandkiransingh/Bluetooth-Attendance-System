@@ -1,6 +1,7 @@
 package com.example.ck.minorlayout;
 
 import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -26,7 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class register4 extends AppCompatActivity {
+public class register4 extends Activity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -156,6 +157,12 @@ public class register4 extends AppCompatActivity {
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String branch = extras.getString("key");
+            Log.d(TAG, "onCreate: branch"+branch);
+            //The key argument here must match that used in the other activity
+        }
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,14 +245,18 @@ public class register4 extends AppCompatActivity {
      * NOTE: This will only execute on versions > LOLLIPOP because it is not needed otherwise.
      */
     private void checkBTPermissions() {
-        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M){
             int permissionCheck = this.checkSelfPermission("Manifest.permission.ACCESS_FINE_LOCATION");
             permissionCheck += this.checkSelfPermission("Manifest.permission.ACCESS_COARSE_LOCATION");
             if (permissionCheck != 0) {
 
                 this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
             }
-        }else{
+        }
+
+
+
+        else{
             Log.d(TAG, "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");
         }
     }

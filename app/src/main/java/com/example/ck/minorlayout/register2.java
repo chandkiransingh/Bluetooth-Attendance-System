@@ -1,12 +1,13 @@
 package com.example.ck.minorlayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class register2 extends AppCompatActivity {
+public class register2 extends Activity {
 
     Button year1,year2,year3,year4,year5;
     @Override
