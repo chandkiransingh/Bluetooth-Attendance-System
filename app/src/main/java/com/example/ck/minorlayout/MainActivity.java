@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,register.class));
+                startActivity(new Intent(MainActivity.this,register4.class));
             }
         });
         attandance.setOnClickListener(new View.OnClickListener() {

@@ -9,28 +9,25 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
-public class register extends AppCompatActivity {
-    private static final String TAG = "register";
+public class register4 extends AppCompatActivity {
+    private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
@@ -131,8 +128,9 @@ public class register extends AppCompatActivity {
                 HashMap<String ,String> map = new HashMap<>();
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
-                myRef.child(device.getAddress()).setValue(device.getName());
-
+                Date c = Calendar.getInstance().getTime();
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                myRef.child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
                 }
         }
     };
@@ -151,7 +149,7 @@ public class register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_register4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
@@ -253,6 +251,6 @@ public class register extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        startActivity(new Intent(register.this,MainActivity.class));
+        startActivity(new Intent(register4.this,MainActivity.class));
     }
 }

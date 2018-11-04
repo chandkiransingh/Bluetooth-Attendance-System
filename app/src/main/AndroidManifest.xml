@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_PRIVILEGED" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -28,12 +28,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".register"
+            android:name=".register4"
             android:icon="@drawable/logo" />
         <activity android:name=".attandance1" />
         <activity android:name=".attandance2" />
         <activity android:name=".attandance3" />
-        <activity android:name=".attandance4"></activity>
+        <activity android:name=".attandance4" />
     </application>
 
 </manifest>

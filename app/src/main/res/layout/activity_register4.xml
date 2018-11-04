@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bcg"
-    tools:context="com.example.ck.minorlayout.register">
+    tools:context="com.example.ck.minorlayout.register4">
 
     <Button
         android:id="@+id/btnONOFF"
