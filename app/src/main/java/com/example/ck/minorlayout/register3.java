@@ -19,13 +19,13 @@ public class register3 extends AppCompatActivity {
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register3.this,attandance4.class));
+                startActivity(new Intent(register3.this,register4.class));
             }
         });
         sub2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register3.this,attandance4.class));
+                startActivity(new Intent(register3.this,register4.class));
             }
         });
     }

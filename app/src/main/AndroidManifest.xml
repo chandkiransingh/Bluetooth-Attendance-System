@@ -34,6 +34,9 @@
         <activity android:name=".attandance2" />
         <activity android:name=".attandance3" />
         <activity android:name=".attandance4" />
+        <activity android:name=".register1" />
+        <activity android:name=".register2" />
+        <activity android:name=".register3" />
     </application>
 
 </manifest>

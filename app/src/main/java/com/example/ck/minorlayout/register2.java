@@ -22,31 +22,31 @@ public class register2 extends AppCompatActivity {
         year1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,attandance3.class));
+                startActivity(new Intent(register2.this,register3.class));
             }
         });
         year2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,attandance3.class));
+                startActivity(new Intent(register2.this,register3.class));
             }
         });
         year3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,attandance3.class));
+                startActivity(new Intent(register2.this,register3.class));
             }
         });
         year4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,attandance3.class));
+                startActivity(new Intent(register2.this,register3.class));
             }
         });
         year5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,attandance3.class));
+                startActivity(new Intent(register2.this,register3.class));
             }
         });
 
