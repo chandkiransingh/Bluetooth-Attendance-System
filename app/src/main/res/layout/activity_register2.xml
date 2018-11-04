@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bcg"
+    tools:context=".attandance2">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/sub1"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="1st year"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/year2"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignTop="@id/sub1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="2nd year"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/year3"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignTop="@id/year2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="3rd year"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/year4"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignTop="@id/year3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="4th year"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/year5"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignTop="@id/year4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="5th year"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
