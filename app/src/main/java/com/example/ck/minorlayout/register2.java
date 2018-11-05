@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import static android.content.ContentValues.TAG;
 
 public class register2 extends Activity {
 
@@ -20,34 +23,53 @@ public class register2 extends Activity {
         year4 = (Button)findViewById(R.id.year4);
         year5 = (Button)findViewById(R.id.year5);
 
+        Intent intent = getIntent();
+
+        final String branch = intent.getStringExtra("branch");
+
         year1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,register3.class));
+                Intent myintent = (new Intent(register2.this,register3.class));
+                myintent.putExtra("branch", branch);
+                myintent.putExtra("year", "1st year");
+                startActivity(myintent);
             }
         });
         year2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,register3.class));
+                Intent myintent =(new Intent(register2.this,register3.class));
+                myintent.putExtra("branch", branch);
+                myintent.putExtra("year", "2nd year");
+                startActivity(myintent);
             }
         });
         year3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,register3.class));
+                Intent myintent =(new Intent(register2.this,register3.class));
+                myintent.putExtra("branch", branch);
+                myintent.putExtra("year", "3rd year");
+                startActivity(myintent);
             }
         });
         year4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,register3.class));
+                Intent myintent =(new Intent(register2.this,register3.class));
+                myintent.putExtra("branch", branch);
+                myintent.putExtra("year", "4th year");
+                startActivity(myintent);
             }
         });
         year5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(register2.this,register3.class));
+                Intent myintent =(new Intent(register2.this,register3.class));
+                myintent.putExtra("branch", branch);
+                myintent.putExtra("year", "5th year");
+                startActivity(myintent);
             }
         });
 

@@ -71,6 +71,9 @@ public class attandance4 extends Activity {
                         break;
                 }
             }
+
+
+
         }
     };
 
@@ -161,7 +164,6 @@ public class attandance4 extends Activity {
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,32 +172,44 @@ public class attandance4 extends Activity {
             }
         });
 
+        Intent intent = getIntent();
+        String branch = intent.getStringExtra("branch");
+        String year = intent.getStringExtra("year");
+        String subject = intent.getStringExtra("subject");
+        Log.d(branch, "onReceive: branch year subject "+branch+year+subject);
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference branches = database.getReference(branch);
+        DatabaseReference years = branches.child(year);
+        DatabaseReference subjects = years.child(subject);
+
+        subjects.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //get all key and values
                 for(DataSnapshot obj:dataSnapshot.getChildren())
                 {
                     String key = obj.getKey();
                     String value = obj.getValue().toString();
                     Log.d("Key and Value", "onDataChange: " + key + "and value: " + value);
-                    map.put(key,value);
+                    int length = (value).length();
+                    String finalvalue = value.substring(length-9,length-1);
+                    Log.d(" length ", "onDataChange: length  "+length);
+                    Log.d(finalvalue, "onDataChange: finalvalue  "+finalvalue);
+                    map.put(key,finalvalue);
                     // Log.d("map", " map values "+map);
                 }
                 mylist.add(map);
                 Log.d("mylist", "onCreate: of list "+mylist+map);
                 List<String> listes = new ArrayList<String>(map.values());
-                ListAdapter arrayAdapter = new ArrayAdapter<String>(attandance4.this,android.R.layout.simple_list_item_1,listes);
+   ListAdapter arrayAdapter = new ArrayAdapter<String>(attandance4.this,android.R.layout.simple_list_item_1,listes);
                 savedDevices.setAdapter(arrayAdapter);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-
-
-
     }
 
 

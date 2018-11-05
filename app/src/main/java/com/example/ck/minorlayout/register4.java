@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -35,12 +36,33 @@ public class register4 extends Activity {
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices;
-    DataSnapshot dataSnapshot;
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
+
    // DatabaseReference myRef2 = database.getReference("Device Address");
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register4);
+        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
+        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
+        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
+        mBTDevices = new ArrayList<>();
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+
+        btnONOFF.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: enabling/disabling bluetooth.");
+                enableDisableBT();
+            }
+        });
+
+    }
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -120,19 +142,34 @@ public class register4 extends Activity {
             final String action = intent.getAction();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
-            if (action.equals(BluetoothDevice.ACTION_FOUND)){
-                final BluetoothDevice device = intent.getParcelableExtra (BluetoothDevice.EXTRA_DEVICE);
+            if (action.equals(BluetoothDevice.ACTION_FOUND)) {
+                final BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 mBTDevices.add(device);
                 Log.d(TAG, "onReceive: " + device.getName() + ": " + device.getAddress());
                 mDeviceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mBTDevices);
                 lvNewDevices.setAdapter(mDeviceListAdapter);
-                HashMap<String ,String> map = new HashMap<>();
+                HashMap<String, String> map = new HashMap<>();
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
-                Date c = Calendar.getInstance().getTime();
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
-                myRef.child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
-                }
+                intent = getIntent();
+                String branch = intent.getStringExtra("branch");
+                String year = intent.getStringExtra("year");
+                String subject = intent.getStringExtra("subject");
+                String branchcompare = device.getName().substring(4,5);
+                Log.d("branch", "onReceive: branch compare"+branchcompare);
+               // if (branch == branchcompare)
+
+                    Toast.makeText(register4.this,"device registered"+device.getName(),Toast.LENGTH_SHORT).show();
+                    myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+
+
+              /*  else {
+                    Log.d(TAG, "onReceive: device name not correct");
+                    //Toast.makeText(register4.this,"Change device name to roll number 99ICS999",Toast.LENGTH_SHORT).show();
+                } */
+
+            }
         }
     };
 
@@ -145,36 +182,6 @@ public class register4 extends Activity {
         unregisterReceiver(mBroadcastReceiver2);
         //mBluetoothAdapter.cancelDiscovery();
     }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register4);
-        Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
-        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
-        mBTDevices = new ArrayList<>();
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String branch = extras.getString("key");
-            Log.d(TAG, "onCreate: branch"+branch);
-            //The key argument here must match that used in the other activity
-        }
-
-        btnONOFF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d(TAG, "onClick: enabling/disabling bluetooth.");
-                enableDisableBT();
-            }
-        });
-
-    }
-
-
 
     public void enableDisableBT(){
         if(mBluetoothAdapter == null){

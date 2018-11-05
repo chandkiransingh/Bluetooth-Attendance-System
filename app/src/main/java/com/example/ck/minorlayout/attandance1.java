@@ -19,14 +19,17 @@ public class attandance1 extends Activity {
         cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(new Intent(attandance1.this,attandance2.class));
+                Intent myIntent = new Intent(attandance1.this, attandance2.class);
+                myIntent.putExtra("branch", "cs");
+                startActivity(myIntent);
             }
         });
         ec.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(attandance1.this,attandance2.class));
+                Intent myIntent = new Intent(attandance1.this, attandance2.class);
+                myIntent.putExtra("branch", "ec");
+                startActivity(myIntent);
             }
         });
     }
