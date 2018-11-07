@@ -20,7 +20,7 @@ public class attandance1 extends Activity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(attandance1.this, attandance2.class);
-                myIntent.putExtra("branch", "cs");
+                myIntent.putExtra("branch", "CS");
                 startActivity(myIntent);
             }
         });
@@ -28,7 +28,7 @@ public class attandance1 extends Activity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(attandance1.this, attandance2.class);
-                myIntent.putExtra("branch", "ec");
+                myIntent.putExtra("branch", "EC");
                 startActivity(myIntent);
             }
         });

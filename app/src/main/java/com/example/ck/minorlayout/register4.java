@@ -71,7 +71,6 @@ public class register4 extends Activity {
             // When discovery finds a device
             if (action.equals(mBluetoothAdapter.ACTION_STATE_CHANGED)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, mBluetoothAdapter.ERROR);
-
                 switch(state){
                     case BluetoothAdapter.STATE_OFF:
                         Log.d(TAG, "onReceive: STATE OFF");
@@ -156,18 +155,18 @@ public class register4 extends Activity {
                 String branch = intent.getStringExtra("branch");
                 String year = intent.getStringExtra("year");
                 String subject = intent.getStringExtra("subject");
-                String branchcompare = device.getName().substring(4,5);
-                Log.d("branch", "onReceive: branch compare"+branchcompare);
-               // if (branch == branchcompare)
+                String branchcompare = device.getName().substring(3,5);
+                Log.d("branch", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
+               if (branch.equals(branchcompare)) {
+                  // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
+                   Log.d(TAG, "onReceive: device name is correct");
+                   myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+               }
 
-                    Toast.makeText(register4.this,"device registered"+device.getName(),Toast.LENGTH_SHORT).show();
-                    myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
-
-
-              /*  else {
+                else {
                     Log.d(TAG, "onReceive: device name not correct");
                     //Toast.makeText(register4.this,"Change device name to roll number 99ICS999",Toast.LENGTH_SHORT).show();
-                } */
+                }
 
             }
         }
