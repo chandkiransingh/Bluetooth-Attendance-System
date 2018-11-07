@@ -139,7 +139,6 @@ public class attandance4 extends Activity {
                 Log.d(TAG, "map value is: " + map);
                // myRef.child(device.getAddress()).setValue(device.getName());
                // myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
-
             }
         }
     };
