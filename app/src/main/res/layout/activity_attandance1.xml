@@ -19,7 +19,7 @@
                 android:layout_height="70dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="200dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shape"
                 android:fontFamily="cursive"
                 android:text="CS"
@@ -36,6 +36,20 @@
                 android:background="@drawable/shape"
                 android:fontFamily="cursive"
                 android:text="EC"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+
+            <Button
+                android:id="@+id/it"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_alignTop="@id/ec"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:background="@drawable/shape"
+                android:fontFamily="cursive"
+                android:text="IT"
                 android:textColor="@android:color/white"
                 android:textSize="25sp" />
         </RelativeLayout>

@@ -9,13 +9,14 @@ import android.widget.Button;
 
 public class register1 extends Activity {
 
-    Button cs,ec;
+    Button cs,ec,it;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register1);
         cs = (Button) findViewById(R.id.sub1);
-        ec= (Button) findViewById(R.id.ec);
+        ec = (Button) findViewById(R.id.ec);
+        it = (Button) findViewById(R.id.it);
         cs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,6 +30,14 @@ public class register1 extends Activity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(register1.this, register2.class);
                 myIntent.putExtra("branch", "EC");
+                startActivity(myIntent);
+            }
+        });
+        it.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(register1.this, register2.class);
+                myIntent.putExtra("branch", "IT");
                 startActivity(myIntent);
             }
         });

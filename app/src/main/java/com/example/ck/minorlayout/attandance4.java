@@ -138,6 +138,8 @@ public class attandance4 extends Activity {
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
                // myRef.child(device.getAddress()).setValue(device.getName());
+               // myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+
             }
         }
     };
@@ -158,7 +160,7 @@ public class attandance4 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
+      //  btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         savedDevices = (ListView) findViewById(R.id.savedDevices);
         mBTDevices = new ArrayList<>();
@@ -200,7 +202,7 @@ public class attandance4 extends Activity {
                     // Log.d("map", " map values "+map);
                 }
                 mylist.add(map);
-                Log.d("mylist", "onCreate: of list "+mylist+map);
+                Log.d("mylist", "onCreate: of list: "+mylist+" map: "+map.keySet());
                 List<String> listes = new ArrayList<String>(map.values());
    ListAdapter arrayAdapter = new ArrayAdapter<String>(attandance4.this,android.R.layout.simple_list_item_1,listes);
                 savedDevices.setAdapter(arrayAdapter);

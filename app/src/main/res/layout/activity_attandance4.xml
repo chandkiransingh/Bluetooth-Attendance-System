@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bcg"
     tools:context="com.example.ck.minorlayout.attandance4">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
     <Button
         android:id="@+id/btnONOFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="54dp"
+        android:layout_marginLeft="52dp"
+        android:layout_toRightOf="@id/anchor"
         android:background="@drawable/shape"
         android:text="ON/OFF"
         android:textColor="@android:color/white" />
@@ -31,10 +21,8 @@
         android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnONOFF"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@id/anchor"
         android:background="@drawable/shape"
         android:onClick="btnDiscover"
         android:padding="10dp"
@@ -46,10 +34,7 @@
         android:layout_width="190dp"
         android:layout_height="match_parent"
         android:layout_below="@id/textView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="-3dp"
-        android:layout_marginBottom="0dp"
+        android:layout_toLeftOf="@id/anchor"
         android:background="@drawable/borders"
         android:divider="#FFCC00" />
 
@@ -57,12 +42,8 @@
         android:id="@+id/savedDevices"
         android:layout_width="190dp"
         android:layout_height="match_parent"
-        android:layout_alignTop="@+id/lvNewDevices"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:layout_toEndOf="@+id/lvNewDevices"
+        android:layout_below="@id/textView2"
+        android:layout_toRightOf="@id/anchor"
         android:background="@drawable/borders"
         android:divider="#FFCC00"
         android:textFilterEnabled="true" />
@@ -71,8 +52,8 @@
         android:id="@+id/textView"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/savedDevices"
-        android:layout_alignTop="@+id/textView2"
+        android:layout_below="@id/btnONOFF"
+        android:layout_toRightOf="@id/anchor"
         android:background="@drawable/rectangle"
         android:padding="10dp"
         android:text="Students List"
@@ -83,14 +64,18 @@
         android:id="@+id/textView2"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/lvNewDevices"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="74dp"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_toLeftOf="@id/anchor"
         android:background="@drawable/rectangle"
         android:padding="10dp"
         android:text="Nearby Students"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

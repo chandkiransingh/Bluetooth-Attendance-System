@@ -19,7 +19,7 @@
                 android:layout_height="70dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/shape"
                 android:fontFamily="cursive"
                 android:text="1st year"

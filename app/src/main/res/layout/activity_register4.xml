@@ -7,43 +7,83 @@
     android:background="@drawable/bcg"
     tools:context="com.example.ck.minorlayout.register4">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnFindUnpairedDevices"
+        android:layout_toLeftOf="@id/anchor"
+        android:background="@drawable/rectangle"
+        android:padding="10dp"
+        android:text="Nearby Students"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnONOFF"
+        android:layout_toRightOf="@id/anchor"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rectangle"
+        android:padding="10dp"
+        android:text="Registered Students"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
     <Button
         android:id="@+id/btnONOFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/anchor"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="52dp"
+        android:background="@drawable/shape"
         android:text="ON/OFF"
-        android:layout_margin="10dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/shape"/>
-
-    <Button
-        android:id="@+id/btnDiscoverable_on_off"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="btnEnableDisable_Discoverable"
-        android:text="Enable Discoverable"
-        android:layout_margin="10dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/shape"/>
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/anchor"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/shape"
         android:onClick="btnDiscover"
         android:text="Discover"
-        android:layout_margin="10dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/shape"/>
+        android:textColor="@android:color/white" />
 
     <ListView
         android:id="@+id/lvNewDevices"
-        android:layout_width="match_parent"
+        android:layout_width="190dp"
         android:layout_height="match_parent"
-        android:layout_below="@id/btnFindUnpairedDevices"
-        android:layout_margin="10dp"/>
+        android:layout_below="@id/textView3"
+        android:layout_toLeftOf="@id/anchor"
+        android:background="@drawable/borders"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/savedDevices"
+        android:layout_width="190dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView4"
+        android:layout_toRightOf="@id/anchor"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/borders"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+
+
 </RelativeLayout>

@@ -10,35 +10,42 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class register4 extends Activity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
-    Button btnEnableDisable_Discoverable;
+  //  Button btnEnableDisable_Discoverable;
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
-    ListView lvNewDevices;
+    ListView lvNewDevices,savedDevices;
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+
 
 
    // DatabaseReference myRef2 = database.getReference("Device Address");
@@ -48,8 +55,9 @@ public class register4 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
+    // btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
+        savedDevices = (ListView) findViewById(R.id.savedDevices);
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -139,6 +147,7 @@ public class register4 extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            final HashMap<String, String> maps = new HashMap<String, String>();
             Log.d(TAG, "onReceive: ACTION FOUND.");
 
             if (action.equals(BluetoothDevice.ACTION_FOUND)) {
@@ -167,6 +176,43 @@ public class register4 extends Activity {
                     Log.d(TAG, "onReceive: device name not correct");
                     //Toast.makeText(register4.this,"Change device name to roll number 99ICS999",Toast.LENGTH_SHORT).show();
                 }
+
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference branches = database.getReference(branch);
+                DatabaseReference years = branches.child(year);
+                DatabaseReference subjects = years.child(subject);
+
+                subjects.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //get all key and values
+                        for(DataSnapshot obj:dataSnapshot.getChildren())
+                        {
+                            String key = obj.getKey();
+                            String value = obj.getValue().toString();
+                            Log.d("Key and Value", "onDataChange: " + key + "and value: " + value);
+                            int length = (value).length();
+                            String finalvalue = value.substring(length-9,length-1);
+                            Log.d(" length ", "onDataChange: length  "+length);
+                            Log.d(finalvalue, "onDataChange: finalvalue  "+finalvalue);
+                            maps.put(key,finalvalue);
+                            // Log.d("maps", " maps values "+maps);
+                        }
+                        List<String> listes = new ArrayList<String>(maps.values());
+                        ListAdapter arrayAdapter = new ArrayAdapter<String>(register4.this,android.R.layout.simple_list_item_1,listes);
+                        savedDevices.setAdapter(arrayAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+
+
+
+
 
             }
         }
