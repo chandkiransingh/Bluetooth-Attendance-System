@@ -27,26 +27,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class attandance4 extends Activity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
-    Button btnEnableDisable_Discoverable;
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices,savedDevices;
-    DataSnapshot dataSnapshot;
-    // Write a message to the database
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     final HashMap<String, String> map = new HashMap<String, String>();
     final ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-    // DatabaseReference myRef2 = database.getReference("Device Address");
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -71,9 +71,6 @@ public class attandance4 extends Activity {
                         break;
                 }
             }
-
-
-
         }
     };
 
@@ -137,8 +134,23 @@ public class attandance4 extends Activity {
                 HashMap<String ,String> map = new HashMap<>();
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
-               // myRef.child(device.getAddress()).setValue(device.getName());
-               // myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+                intent = getIntent();
+                String branch = intent.getStringExtra("branch");
+                String year = intent.getStringExtra("year");
+                String subject = intent.getStringExtra("subject");
+                Log.d(branch, "onReceive: branch year subject "+branch+year+subject);
+                String branchcompare = device.getName().substring(3,5);
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                if (branch.equals(branchcompare)) {
+                    // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onReceive: device name is correct");
+                    myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+                }
+
+                else {
+                    Log.d(TAG, "onReceive: device name not correct");
+                    //Toast.makeText(register4.this,"Change device name to roll number 99ICS999",Toast.LENGTH_SHORT).show();
+                }
             }
         }
     };
@@ -159,7 +171,6 @@ public class attandance4 extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-      //  btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         savedDevices = (ListView) findViewById(R.id.savedDevices);
         mBTDevices = new ArrayList<>();
@@ -237,18 +248,6 @@ public class attandance4 extends Activity {
 
     }
 
-
-    public void btnEnableDisable_Discoverable(View view) {
-        Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
-
-        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        startActivity(discoverableIntent);
-
-        IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadcastReceiver2,intentFilter);
-
-    }
 
     public void btnDiscover(View view) {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");

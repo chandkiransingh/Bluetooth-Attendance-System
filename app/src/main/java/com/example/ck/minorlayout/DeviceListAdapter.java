@@ -1,5 +1,4 @@
 package com.example.ck.minorlayout;
-
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,9 +10,7 @@ import android.widget.Toast;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-
 public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
-
     private LayoutInflater mLayoutInflater;
     private ArrayList<BluetoothDevice> mDevices;
     private int  mViewResourceId;
@@ -27,12 +24,10 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = mLayoutInflater.inflate(mViewResourceId, null);
-
         final BluetoothDevice device = mDevices.get(position);
         TextView deviceName = (TextView) convertView.findViewById(R.id.tvDeviceName);
         TextView deviceAdress = (TextView) convertView.findViewById(R.id.tvDeviceAddress);
         if (device != null) {
-
             if (deviceName != null) {
                 deviceName.setText(device.getName());
             }
@@ -40,7 +35,6 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
                 deviceAdress.setText(device.getAddress());
             }
         }
-
         return convertView;
     }
 }

@@ -38,7 +38,6 @@ public class register4 extends Activity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
-  //  Button btnEnableDisable_Discoverable;
     public ArrayList<BluetoothDevice> mBTDevices = new ArrayList<>();
     public DeviceListAdapter mDeviceListAdapter;
     ListView lvNewDevices,savedDevices;
@@ -46,16 +45,11 @@ public class register4 extends Activity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
 
-
-
-   // DatabaseReference myRef2 = database.getReference("Device Address");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-    // btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         savedDevices = (ListView) findViewById(R.id.savedDevices);
         mBTDevices = new ArrayList<>();
@@ -208,12 +202,6 @@ public class register4 extends Activity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
-
-
-
-
-
-
             }
         }
     };
@@ -250,18 +238,6 @@ public class register4 extends Activity {
 
     }
 
-
-    public void btnEnableDisable_Discoverable(View view) {
-        Log.d(TAG, "btnEnableDisable_Discoverable: Making device discoverable for 300 seconds.");
-
-        Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-        startActivity(discoverableIntent);
-
-        IntentFilter intentFilter = new IntentFilter(mBluetoothAdapter.ACTION_SCAN_MODE_CHANGED);
-        registerReceiver(mBroadcastReceiver2,intentFilter);
-
-    }
 
     public void btnDiscover(View view) {
         Log.d(TAG, "btnDiscover: Looking for unpaired devices.");
@@ -305,8 +281,6 @@ public class register4 extends Activity {
                 this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001); //Any number
             }
         }
-
-
 
         else{
             Log.d(TAG, "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");

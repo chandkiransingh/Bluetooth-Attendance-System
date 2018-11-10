@@ -61,9 +61,7 @@
         android:layout_below="@id/textView3"
         android:layout_toLeftOf="@id/anchor"
         android:background="@drawable/borders"
-        android:padding="10dp"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:padding="10dp"/>
 
     <ListView
         android:id="@+id/savedDevices"
@@ -73,17 +71,12 @@
         android:layout_toRightOf="@id/anchor"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/borders"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
-
+        android:background="@drawable/borders"/>
 
     <View
         android:id="@+id/anchor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerInParent="true" />
-
-
 
 </RelativeLayout>
