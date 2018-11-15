@@ -160,8 +160,6 @@ public class register4 extends Activity {
                 String year = intent.getStringExtra("year");
                 String subject = intent.getStringExtra("subject");
                 Log.d(TAG, "onReceive:  device name is : "+device.getName());
-                //String branchcompare = device.getName();
-                //branchcompare = device.getName().substring(3, 5);
                 branchcompare = device.getName();
                 if(branchcompare!=null && branchcompare.length()>7)
                 {
