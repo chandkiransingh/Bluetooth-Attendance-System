@@ -47,6 +47,7 @@ public class attandance4 extends Activity {
     DatabaseReference myRef = database.getReference();
     final HashMap<String, String> map = new HashMap<String, String>();
     final ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+    String branchcompare;
 
     // Create a BroadcastReceiver for ACTION_FOUND
     private final BroadcastReceiver mBroadcastReceiver1 = new BroadcastReceiver() {
@@ -139,7 +140,17 @@ public class attandance4 extends Activity {
                 String year = intent.getStringExtra("year");
                 String subject = intent.getStringExtra("subject");
                 Log.d(branch, "onReceive: branch year subject "+branch+year+subject+device.getName());
-                String branchcompare = device.getName().substring(3,5);
+                branchcompare = device.getName();
+                if(branchcompare!=null && branchcompare.length()>7)
+                {
+                    branchcompare = device.getName().substring(3, 5);
+                }
+                else
+                {
+                    Log.d(TAG, "onReceive: device name is not valid");
+                }
+
+                //String branchcompare = device.getName().substring(3,5);
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 if (branch.equals(branchcompare)) {
                     // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
