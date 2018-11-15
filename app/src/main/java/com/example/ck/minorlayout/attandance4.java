@@ -138,7 +138,7 @@ public class attandance4 extends Activity {
                 String branch = intent.getStringExtra("branch");
                 String year = intent.getStringExtra("year");
                 String subject = intent.getStringExtra("subject");
-                Log.d(branch, "onReceive: branch year subject "+branch+year+subject);
+                Log.d(branch, "onReceive: branch year subject "+branch+year+subject+device.getName());
                 String branchcompare = device.getName().substring(3,5);
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 if (branch.equals(branchcompare)) {

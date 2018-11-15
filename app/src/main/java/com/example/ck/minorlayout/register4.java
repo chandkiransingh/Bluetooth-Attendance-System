@@ -44,6 +44,7 @@ public class register4 extends Activity {
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    String branchcompare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,8 +159,20 @@ public class register4 extends Activity {
                 String branch = intent.getStringExtra("branch");
                 String year = intent.getStringExtra("year");
                 String subject = intent.getStringExtra("subject");
-                String branchcompare = device.getName().substring(3,5);
-                Log.d("branch", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
+                Log.d(TAG, "onReceive:  device name is : "+device.getName());
+                //String branchcompare = device.getName();
+                //branchcompare = device.getName().substring(3, 5);
+                branchcompare = device.getName();
+                if(branchcompare!=null && branchcompare.length()>7)
+                {
+                    branchcompare = device.getName().substring(3, 5);
+                }
+                else 
+                {
+                    Log.d(TAG, "onReceive: device name is not valid");
+                }
+
+                Log.d(" branch ", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
                if (branch.equals(branchcompare)) {
                   // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
                    Log.d(TAG, "onReceive: device name is correct");
