@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class register4 extends Activity {
+public class register4 extends AppCompatActivity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -48,14 +48,19 @@ public class register4 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MinorTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
-        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         savedDevices = (ListView) findViewById(R.id.savedDevices);
+        lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
+
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,10 +160,14 @@ public class register4 extends Activity {
                 map.put(device.getName(), device.getAddress());
                 Log.d(TAG, "map value is: " + map);
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
                 intent = getIntent();
                 String branch = intent.getStringExtra("branch");
-                String year = intent.getStringExtra("year");
-                String subject = intent.getStringExtra("subject");
+                String email = intent.getStringExtra("email");
+                String subjects = intent.getStringExtra("subjects");
+                String teacher = intent.getStringExtra("teacher");
+
+
                 Log.d(TAG, "onReceive:  device name is : "+device.getName());
                 branchcompare = device.getName();
                 if(branchcompare!=null && branchcompare.length()>7)
@@ -171,10 +180,11 @@ public class register4 extends Activity {
                 }
 
                 Log.d(" branch ", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
+
                if (branch.equals(branchcompare)) {
                   // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
                    Log.d(TAG, "onReceive: device name is correct");
-                   myRef.child(branch).child(year).child(subject).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+                   myRef.child(email).child(teacher).child(branch).child(subjects).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
                }
 
                 else {
@@ -184,13 +194,14 @@ public class register4 extends Activity {
 
 
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference branches = database.getReference(branch);
-                DatabaseReference years = branches.child(year);
-                DatabaseReference subjects = years.child(subject);
+                DatabaseReference emails = database.getReference(email);
+                DatabaseReference teahers = emails.child(teacher);
+                DatabaseReference branches = teahers.child(branch);
+                DatabaseReference subject = branches.child(subjects);
 
-                subjects.addValueEventListener(new ValueEventListener() {
+                subject.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //get all key and values
                         for(DataSnapshot obj:dataSnapshot.getChildren())
                         {

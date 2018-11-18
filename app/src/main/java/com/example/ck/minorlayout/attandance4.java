@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class attandance4 extends Activity {
+public class attandance4 extends AppCompatActivity {
     private static final String TAG = "register4";
 
     BluetoothAdapter mBluetoothAdapter;
@@ -179,6 +179,7 @@ public class attandance4 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MinorTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
@@ -186,6 +187,10 @@ public class attandance4 extends Activity {
         savedDevices = (ListView) findViewById(R.id.savedDevices);
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override

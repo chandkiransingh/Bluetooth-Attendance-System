@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class attandance2 extends Activity {
+public class attandance2 extends AppCompatActivity {
 
     Button year1,year2,year3,year4,year5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MinorTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance2);
         year1 = (Button) findViewById(R.id.sub1);
@@ -68,5 +69,9 @@ public class attandance2 extends Activity {
                 startActivity(myintent);
             }
         });
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 }

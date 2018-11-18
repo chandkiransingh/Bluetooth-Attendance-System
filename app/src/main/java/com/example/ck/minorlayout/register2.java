@@ -10,11 +10,12 @@ import android.widget.Button;
 
 import static android.content.ContentValues.TAG;
 
-public class register2 extends Activity {
+public class register2 extends AppCompatActivity {
 
     Button year1,year2,year3,year4,year5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MinorTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register2);
         year1 = (Button) findViewById(R.id.sub1);
@@ -73,5 +74,8 @@ public class register2 extends Activity {
             }
         });
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 }

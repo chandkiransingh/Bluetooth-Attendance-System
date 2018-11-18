@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="52dp"
         android:layout_toRightOf="@id/anchor"
-        android:background="@drawable/shape"
+        android:background="@android:color/holo_blue_dark"
         android:text="ON/OFF"
         android:textColor="@android:color/white" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
         android:layout_toLeftOf="@id/anchor"
-        android:background="@drawable/shape"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="btnDiscover"
         android:padding="10dp"
         android:text="Start Attandance"
@@ -35,8 +35,9 @@
         android:layout_height="match_parent"
         android:layout_below="@id/textView"
         android:layout_toLeftOf="@id/anchor"
-        android:background="@drawable/borders"
-        android:divider="#FFCC00" />
+        android:background="@android:color/holo_blue_dark"
+        android:divider="#FFCC00"
+        android:paddingLeft="20dp" />
 
     <ListView
         android:id="@+id/savedDevices"
@@ -44,7 +45,7 @@
         android:layout_height="match_parent"
         android:layout_below="@id/textView2"
         android:layout_toRightOf="@id/anchor"
-        android:background="@drawable/borders"
+        android:background="@android:color/holo_blue_dark"
         android:divider="#FFCC00"
         android:textFilterEnabled="true" />
 
@@ -54,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnONOFF"
         android:layout_toRightOf="@id/anchor"
-        android:background="@drawable/rectangle"
+        android:background="@android:color/holo_blue_dark"
         android:padding="10dp"
         android:text="Students List"
         android:textColor="@android:color/white"
@@ -66,8 +67,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnFindUnpairedDevices"
         android:layout_toLeftOf="@id/anchor"
-        android:background="@drawable/rectangle"
+        android:background="@android:color/holo_blue_dark"
         android:padding="10dp"
+        android:paddingLeft="20dp"
         android:text="Nearby Students"
         android:textColor="@android:color/white"
         android:textSize="18sp" />

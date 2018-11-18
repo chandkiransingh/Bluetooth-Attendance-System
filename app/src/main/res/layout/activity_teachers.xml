@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teachers"
+    tools:layout_editor_absoluteY="81dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+        android:id="@+id/textView01"
+        android:layout_width="193dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentStart="true"
+        android:text="Aarti Gautam Dinker"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="82dp" />
+
+    <TextView
+        android:id="@+id/textView02"
+        android:layout_width="192dp"
+        android:layout_height="29dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="70dp"
+        android:text="Abhishek SOICT"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="281dp" />
+
+    <TextView
+        android:id="@+id/textView03"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="Alpa Yadav"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView04"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="130dp"
+        android:text="Ankur Kumar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView05"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:text="anumpma nandan"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView06"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="190dp"
+        android:text="Anurag Singh Baghel"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView07"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="220dp"
+        android:text="Aparna Singh"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView08"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="250dp"
+        android:text="Arun Solanki"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView09"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:text="deepika Gupta"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="310dp"
+        android:text="Deepshikha Lodhi"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="340dp"
+        android:text="Diksha Sharma"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="370dp"
+        android:text="Herman Al Ayubi"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:text="Kavita Rani"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="430dp"
+        android:text="Lakhan Singh"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:text="mamta punia"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="480dp"
+        android:text="manali"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="510dp"
+        android:text="namit Bhati"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="540dp"
+        android:text="Navaid Zafar Rizvi"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="570dp"
+        android:text="Neeta Singh"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="600dp"
+        android:text="Nidhi Gulati"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="630dp"
+        android:text="Poonam Yadav"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="670dp"
+        android:text="Pradeep Tomar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="700dp"
+        android:text="Priyanka Goyal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="730dp"
+        android:text="R.B Singh"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="760dp"
+        android:text="Rajesh Mishra"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="790dp"
+        android:text="Roshi Saxena"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="820dp"
+        android:text="Sandeep Sharma"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="850dp"
+        android:text="Sandhya Tarar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="880dp"
+        android:text="Shreya Malhotra"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="910dp"
+        android:text="Sumedha"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="940dp"
+        android:text="Tahseen Fatima"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="970dp"
+        android:text="vandana malviya"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1000dp"
+        android:text="Vidushi Sharma"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="192dp"
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1030dp"
+        android:text="Vimlesh Kumar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="405dp" />
+    </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="Logout" />
+</android.widget.RelativeLayout>

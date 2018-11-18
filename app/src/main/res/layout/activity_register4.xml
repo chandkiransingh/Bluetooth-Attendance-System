@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/btnFindUnpairedDevices"
         android:layout_toLeftOf="@id/anchor"
-        android:background="@drawable/rectangle"
+        android:background="@android:color/holo_blue_dark"
         android:padding="10dp"
         android:text="Nearby Students"
         android:textColor="@android:color/white"
@@ -24,9 +24,9 @@
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnONOFF"
-        android:layout_toRightOf="@id/anchor"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/rectangle"
+        android:layout_toRightOf="@id/anchor"
+        android:background="@android:color/holo_blue_dark"
         android:padding="10dp"
         android:text="Registered Students"
         android:textColor="@android:color/white"
@@ -36,10 +36,10 @@
         android:id="@+id/btnONOFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/anchor"
-        android:layout_marginTop="0dp"
         android:layout_marginLeft="52dp"
-        android:background="@drawable/shape"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@id/anchor"
+        android:background="@android:color/holo_blue_dark"
         android:text="ON/OFF"
         android:textColor="@android:color/white" />
 
@@ -47,9 +47,9 @@
         android:id="@+id/btnFindUnpairedDevices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@id/anchor"
         android:layout_marginRight="52dp"
-        android:background="@drawable/shape"
+        android:layout_toLeftOf="@id/anchor"
+        android:background="@android:color/holo_blue_dark"
         android:onClick="btnDiscover"
         android:text="Discover"
         android:textColor="@android:color/white" />
@@ -60,18 +60,18 @@
         android:layout_height="match_parent"
         android:layout_below="@id/textView3"
         android:layout_toLeftOf="@id/anchor"
-        android:background="@drawable/borders"
-        android:padding="10dp"/>
+        android:background="@android:color/holo_blue_dark"
+        android:padding="10dp" />
 
     <ListView
         android:id="@+id/savedDevices"
         android:layout_width="190dp"
         android:layout_height="match_parent"
         android:layout_below="@id/textView4"
-        android:layout_toRightOf="@id/anchor"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/borders"/>
+        android:layout_toRightOf="@id/anchor"
+        android:background="@android:color/holo_blue_dark" />
 
     <View
         android:id="@+id/anchor"

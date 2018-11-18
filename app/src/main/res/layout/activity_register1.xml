@@ -20,11 +20,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/shape"
-                android:fontFamily="cursive"
+                android:background="@android:color/holo_blue_dark"
                 android:text="CS"
                 android:textColor="@android:color/white"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/ec"
@@ -33,11 +32,11 @@
                 android:layout_alignTop="@id/sub1"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:background="@drawable/shape"
-                android:fontFamily="cursive"
+                android:background="@android:color/holo_blue_dark"
                 android:text="EC"
                 android:textColor="@android:color/white"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
+
             <Button
                 android:id="@+id/it"
                 android:layout_width="150dp"
@@ -45,11 +44,10 @@
                 android:layout_alignTop="@id/ec"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:background="@drawable/shape"
-                android:fontFamily="cursive"
+                android:background="@android:color/holo_blue_dark"
                 android:text="IT"
                 android:textColor="@android:color/white"
-                android:textSize="25sp" />
+                android:textSize="18sp" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
