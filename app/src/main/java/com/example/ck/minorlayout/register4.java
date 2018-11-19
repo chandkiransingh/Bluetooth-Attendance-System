@@ -16,6 +16,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -45,6 +47,7 @@ public class register4 extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
     String branchcompare;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -174,18 +177,18 @@ public class register4 extends AppCompatActivity {
                 {
                     branchcompare = device.getName().substring(3, 5);
                 }
-                else 
+                else
                 {
                     Log.d(TAG, "onReceive: device name is not valid");
                 }
 
                 Log.d(" branch ", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
 
-               if (branch.equals(branchcompare)) {
-                  // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
-                   Log.d(TAG, "onReceive: device name is correct");
-                   myRef.child(email).child(teacher).child(branch).child(subjects).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
-               }
+                if (branch.equals(branchcompare)) {
+                    // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onReceive: device name is correct");
+                    myRef.child(email).child(teacher).child(branch).child(subjects).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+                }
 
                 else {
                     Log.d(TAG, "onReceive: device name not correct");
@@ -201,7 +204,7 @@ public class register4 extends AppCompatActivity {
 
                 subject.addValueEventListener(new ValueEventListener() {
                     @Override
-                                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //get all key and values
                         for(DataSnapshot obj:dataSnapshot.getChildren())
                         {

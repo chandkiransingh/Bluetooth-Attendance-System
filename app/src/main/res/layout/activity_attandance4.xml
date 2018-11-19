@@ -4,8 +4,10 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bcg"
-    tools:context="com.example.ck.minorlayout.attandance4">
+    android:background="@android:color/holo_blue_dark"
+    tools:context="com.example.ck.minorlayout.attandance4"
+
+    >
 
     <Button
         android:id="@+id/btnONOFF"
@@ -42,12 +44,18 @@
     <ListView
         android:id="@+id/savedDevices"
         android:layout_width="190dp"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         android:layout_below="@id/textView2"
         android:layout_toRightOf="@id/anchor"
-        android:background="@android:color/holo_blue_dark"
         android:divider="#FFCC00"
         android:textFilterEnabled="true" />
+    <Button
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@id/savedDevices"
+        android:layout_toRightOf="@id/anchor"
+        android:id="@+id/submitBtn"/>
 
     <TextView
         android:id="@+id/textView"
@@ -60,6 +68,14 @@
         android:text="Students List"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/select_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submitBtn"
+        android:layout_toRightOf="@id/anchor"
+        />
 
     <TextView
         android:id="@+id/textView2"

@@ -19,12 +19,12 @@ public class Subjects extends AppCompatActivity {
             Intent intent = getIntent();
         textView6 = findViewById(R.id.textView6);
         textView7 = findViewById(R.id.textView7);
-        textView8 = findViewById(R.id.textView37);
-        textView9 = findViewById(R.id.textView36);
+        textView8 = findViewById(R.id.textView8);
+        textView9 = findViewById(R.id.textView9);
         textView35 = findViewById(R.id.textView35);
-        textView36 = findViewById(R.id.textView9);
-        textView37 = findViewById(R.id.textView8);
-        textView38 = findViewById(R.id.textView7);
+        textView36 = findViewById(R.id.textView36);
+        textView37 = findViewById(R.id.textView37);
+        textView38 = findViewById(R.id.textView38);
 
         final String email = intent.getStringExtra("email");
         final String teacher = intent.getStringExtra("teacher");
@@ -127,7 +127,7 @@ public class Subjects extends AppCompatActivity {
             textView7.setText("CS481 Compiler Design Lab");
             textView8.setText("CS673 Computer Networks and Distributed Systems");
             textView9.setText("CS685 Computer Network and Distributed Systems Lab");
-            textView9.setText("IT285 Data Structures Lab");
+            textView35.setText("IT285 Data Structures Lab");
         }
         else if(teacher.equals("namit Bhati"))
         {
