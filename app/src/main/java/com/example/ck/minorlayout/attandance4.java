@@ -366,7 +366,11 @@ public class attandance4 extends AppCompatActivity {
             {   String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 Log.d("Ritik", "submitAttendance: "+email+teacher+branch+subjects+student.Address+student.Name+date);
                 myRef.child(email).child(teacher).child(branch).child(subjects).child(student.Address).child(date).setValue(student.Name);
-
+                Toast.makeText(attandance4.this,"Attendance Submitted sucessfully",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(attandance4.this,"Select Students first",Toast.LENGTH_SHORT).show();
             }
         }
     }

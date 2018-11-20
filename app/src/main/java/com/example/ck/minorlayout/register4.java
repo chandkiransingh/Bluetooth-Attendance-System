@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -312,7 +313,24 @@ public class register4 extends AppCompatActivity {
         }
     }
 
-    public void onBackPressed() {
-        startActivity(new Intent(register4.this,MainActivity.class));
+    private Boolean exit = false;
+    public void onBackPressed()
+    {
+        //startActivity(new Intent(register4.this,MainActivity.class));
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+
     }
 }
