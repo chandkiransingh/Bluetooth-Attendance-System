@@ -6,12 +6,35 @@
     android:layout_height="match_parent"
     android:background="@drawable/bcg"
     tools:context=".Branch">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/tname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email"
+                android:layout_centerHorizontal="true"
+                android:text="textview"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="textview"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/sub1"
@@ -19,7 +42,8 @@
                 android:layout_height="70dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/tname"
+                android:layout_marginTop="80dp"
                 android:background="@android:color/holo_blue_dark"
                 android:text="CS"
                 android:textColor="@android:color/background_light"
@@ -51,4 +75,6 @@
                 android:textSize="18sp" />
         </RelativeLayout>
     </ScrollView>
+
+
 </RelativeLayout>

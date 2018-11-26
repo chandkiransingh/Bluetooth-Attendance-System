@@ -1,6 +1,6 @@
 package com.example.ck.minorlayout;
-import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +10,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class AttendanceListAdapter extends ArrayAdapter<DeviceItem> {
     private LayoutInflater mLayoutInflater;
     private ArrayList<DeviceItem> mDevices;
     private int  mViewResourceId;
+    int checkindividual;
 
     public AttendanceListAdapter(Context context, int tvResourceId, ArrayList<DeviceItem> devices){
        //todo check this ritik
@@ -42,6 +43,8 @@ public class AttendanceListAdapter extends ArrayAdapter<DeviceItem> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 mDevices.get(position).selected=isChecked;
+              //  checkindividual++;
+               // Log.d(TAG, "onCheckedChanged: check individual value"+checkindividual); // if user is tapping on check box
             }
         });
         return convertView;
@@ -51,10 +54,11 @@ public class AttendanceListAdapter extends ArrayAdapter<DeviceItem> {
         return mDevices;
     }
     public void check(int position){
-        Log.d("Ritik", "check: function");
-        mDevices.get(position).selected=true;
-        notifyDataSetChanged();
+         Log.d("Ritik", "check: function");
+         mDevices.get(position).selected=true;
+         notifyDataSetChanged();
+         checkindividual++;
+         Log.d(TAG, "onCheckedChanged: check individual value"+checkindividual);
+
     }
-
-
-}
+    }

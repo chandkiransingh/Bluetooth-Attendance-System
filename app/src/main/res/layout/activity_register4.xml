@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bcg"
+    android:background="@android:color/black"
     tools:context="com.example.ck.minorlayout.register4">
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_toRightOf="@id/anchor"
         android:background="@android:color/holo_blue_dark"
         android:padding="10dp"
-        android:text="Registered Students"
+        android:text="Students List"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
@@ -61,6 +61,7 @@
         android:layout_below="@id/textView3"
         android:layout_toLeftOf="@id/anchor"
         android:background="@android:color/holo_blue_dark"
+        android:divider="@color/colorPrimaryDark"
         android:padding="10dp" />
 
     <ListView
@@ -68,15 +69,26 @@
         android:layout_width="190dp"
         android:layout_height="match_parent"
         android:layout_below="@id/textView4"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_toRightOf="@id/anchor"
-        android:background="@android:color/holo_blue_dark" />
+        android:background="@android:color/holo_blue_dark"
+        android:divider="@color/colorPrimaryDark" />
 
     <View
         android:id="@+id/anchor"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerInParent="true" />
+
+    <TextView
+        android:id="@+id/nodevices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnONOFF"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/anchor"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>

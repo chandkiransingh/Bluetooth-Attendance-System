@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,17 +13,19 @@ import com.google.firebase.auth.FirebaseUser;
 public class Teachers extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser user;
-    Button logout;
+   // Button logout;
     TextView textView01,textView02,textView03,textView04,textView05,textView06,textView07,textView08,textView09,textView10,textView11,textView12,textView13,textView14;
     TextView textView15,textView16,textView17,textView18,textView19,textView20,textView21,textView22,textView23,textView24,textView25,textView26,textView27,textView28,textView29;
     TextView textView30,textView31,textView32,textView33,textView34;
+    TextView emailid;
     String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teachers);
         auth = FirebaseAuth.getInstance();
-        logout = findViewById(R.id.logout);
+     //   logout = findViewById(R.id.logout);
+        emailid = findViewById(R.id.email);
         textView01 = findViewById(R.id.textView01);
         textView02 = findViewById(R.id.textView02);
         textView03 = findViewById(R.id.textView03);
@@ -62,6 +63,7 @@ public class Teachers extends AppCompatActivity {
 
         user = auth.getCurrentUser();
         email = user.getEmail();
+        emailid.setText(""+email);
         email = email.replace(".","<dot>");
         email = email.replace("#","<hash>");
         email = email.replace("$","<dollar>");
@@ -69,7 +71,8 @@ public class Teachers extends AppCompatActivity {
         email = email.replace("]","<rightsquarebracket>");
 
         Log.d("email", "onCreate: email id "+email);
-        logout.setOnClickListener(new View.OnClickListener() {
+
+       /* logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 auth.signOut();
@@ -78,6 +81,7 @@ public class Teachers extends AppCompatActivity {
                 startActivity(i);
             }
         });
+*/
 
         textView01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -371,6 +375,9 @@ public class Teachers extends AppCompatActivity {
 
         });
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
     }
 }

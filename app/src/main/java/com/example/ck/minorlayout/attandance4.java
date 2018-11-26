@@ -1,7 +1,6 @@
 package com.example.ck.minorlayout;
 
 import android.Manifest;
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -14,29 +13,24 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class attandance4 extends AppCompatActivity {
     private static final String TAG = "register4";
@@ -55,10 +49,12 @@ public class attandance4 extends AppCompatActivity {
     AttendanceListAdapter mAttendanceListAdapter;
     Button submitBtn;
     CheckBox checkBox;
+    TextView nodevices;
+    int count;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MinorTheme);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attandance4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
@@ -66,12 +62,17 @@ public class attandance4 extends AppCompatActivity {
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         submitBtn=findViewById(R.id.submitBtn);
         checkBox= findViewById(R.id.select_all);
+        nodevices = findViewById(R.id.nodevices);
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            checkAll(isChecked);
+                checkAll(isChecked);
+                // count++; //count the number of times select all value is clicked
+                // Log.d(TAG, "onCheckedChanged: count value is : "+count);
             }
         });
+
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +84,7 @@ public class attandance4 extends AppCompatActivity {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setLogo(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +195,6 @@ public class attandance4 extends AppCompatActivity {
                  subjects = intent.getStringExtra("subjects");
                  teacher = intent.getStringExtra("teacher");
 
-
                 Log.d(TAG, "onReceive:  device name is : "+device.getName());
                 branchcompare = device.getName();
                 if(branchcompare!=null && branchcompare.length()>7)
@@ -211,7 +211,7 @@ public class attandance4 extends AppCompatActivity {
                 if (branch.equals(branchcompare)) {
                     // Toast.makeText(register4.this, "device registered" + device.getName(), Toast.LENGTH_SHORT).show();
                     Log.d(TAG, "onReceive: device name is correct");
-                    myRef.child(email).child(teacher).child(branch).child(subjects).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
+                   // myRef.child(email).child(teacher).child(branch).child(subjects).child(device.getAddress()).child(String.valueOf(date)).setValue(device.getName());
                 }
 
                 else {
@@ -223,7 +223,7 @@ public class attandance4 extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference emails = database.getReference(email);
                 DatabaseReference teahers = emails.child(teacher);
-                DatabaseReference branches = teahers.child(branch);
+                final DatabaseReference branches = teahers.child(branch);
                 DatabaseReference subject = branches.child(subjects);
 
                 subject.addValueEventListener(new ValueEventListener() {
@@ -232,19 +232,43 @@ public class attandance4 extends AppCompatActivity {
                         //get all key and values
                         for(DataSnapshot obj:dataSnapshot.getChildren())
                         {
-                            String key = obj.getKey();
-                            String value = obj.getValue().toString();
+                            String key = obj.getKey();                  // MAC Adddress
+                            String value = obj.getValue().toString();   //date and roll number
                             Log.d("Key and Value", "onDataChange: " + key + "and value: " + value);
                             int length = (value).length();
-                            String finalvalue = value.substring(length-9,length-1);
+                            String finalvalue = value.substring(length-9,length-1);  // here we get the roll number
                             Log.d(" length ", "onDataChange: length  "+length);
                             Log.d(finalvalue, "onDataChange: finalvalue  "+finalvalue);
 
-                            Log.d("maps", " maps values "+maps);
                             DeviceItem deviceItem = new DeviceItem();
-                            deviceItem.Name=finalvalue;
-                            deviceItem.Address=key;
-                            if(!alreadyDevices.contains(deviceItem.Address))
+
+
+                            branchcompare = finalvalue;
+                            if(branchcompare!=null && branchcompare.length()>7)
+                            {
+                                branchcompare = finalvalue.substring(3, 5);
+                            }
+                            else
+                            {
+                                Log.d(TAG, " device name is not valid");
+                            }
+
+                            Log.d(" branch ", "onReceive: branch compare: "+branchcompare+" branch: "+branch);
+
+                            if (branch.equals(branchcompare)) {
+                                deviceItem.Name = finalvalue;
+                                deviceItem.Address=key;
+                                Log.d("branch", "cksingh"+finalvalue);
+                            }
+
+                            else {
+                                Log.d(TAG, "onReceive: device name not correct");
+                                //Toast.makeText(register4.this,"Change device name to roll number 99ICS999",Toast.LENGTH_SHORT).show();
+                            }
+
+
+
+                            if(!alreadyDevices.contains(deviceItem.Address) && branch.equals(branchcompare))
                             {
                                 listes.add(deviceItem);
                                 alreadyDevices.add(deviceItem.Address);
@@ -252,13 +276,12 @@ public class attandance4 extends AppCompatActivity {
                         }
                         Log.d("Ritik", "onDataChange: "+maps.toString());
 
-
                         //listes = new ArrayList<DeviceItem>(maps.values());
                         Log.d("Ritik", "devices size: "+listes.size());
                         //ListAdapter arrayAdapter = new ArrayAdapter<String>(attandance4.this,android.R.layout.simple_list_item_1,listes);
 
                         mAttendanceListAdapter = new AttendanceListAdapter(attandance4.this, R.layout.attendance_adapter_view, listes);
-
+                       //nodevices.setText(""+listes.size());
 
                         savedDevices.setAdapter(mAttendanceListAdapter);
                         // savedDevices.setAdapter(arrayAdapter);
@@ -354,40 +377,45 @@ public class attandance4 extends AppCompatActivity {
         }
     }
 
-    public void onBackPressed() {
-        startActivity(new Intent(attandance4.this,MainActivity.class));
-    }
+
     public void submitAttendance(){
 
         ArrayList<DeviceItem> attendance = mAttendanceListAdapter.getmDevices();
         for(int i=0;i<attendance.size();i++){
             DeviceItem student = attendance.get(i);
             if(student.selected)
-            {   String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+            {
+                String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 Log.d("Ritik", "submitAttendance: "+email+teacher+branch+subjects+student.Address+student.Name+date);
                 myRef.child(email).child(teacher).child(branch).child(subjects).child(student.Address).child(date).setValue(student.Name);
-                Toast.makeText(attandance4.this,"Attendance Submitted sucessfully",Toast.LENGTH_SHORT).show();
+                myRef.child(email).child(teacher).child(branch).child(subjects).child("TotalDate").child(date).setValue("P");
+                Toast.makeText(attandance4.this,"Attendance Submitted successfully",Toast.LENGTH_SHORT).show();
             }
             else
             {
-                Toast.makeText(attandance4.this,"Select Students first",Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "submitAttendance: students not selected ");
+               // Toast.makeText(attandance4.this,"Select Students first",Toast.LENGTH_SHORT).show();
             }
         }
     }
-    public void checkAll(Boolean selection){
+    public void checkAll(Boolean selection)
+    {
         for(int i=0;i<listes.size();i++)
             listes.get(i).selected=selection;
+        Log.d("cksingh", "selected "+listes);
         mAttendanceListAdapter.notifyDataSetChanged();
     }
+
     public void checkFound(){
         Log.d("Ritik", "checkFound: ");
+
 
         for(int i=0;i<mBTDevices.size();i++) {
 
             prenties.add(mBTDevices.get(i).getAddress());
             Log.d("Ritik", "checkFound: "+mBTDevices.get(i).getAddress());
         }
-        Log.d(TAG, "checkFound: size of devices"+prenties.size());
+        Log.d("Ritik", "checkFound: size of devices"+prenties.size());
 
         for(int j=0;j<listes.size();j++) {
 
@@ -401,5 +429,12 @@ public class attandance4 extends AppCompatActivity {
         }
 
 
+    }
+    public void onBackPressed() {
+        finish();
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

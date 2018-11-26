@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -46,6 +47,43 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_centerInParent="true" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text=""
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/email"
+                android:text=""
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/branch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tname"
+                android:text=""
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/branch"
+                android:text=""
+                android:textColor="@android:color/white"/>
+
+
         </RelativeLayout>
     </ScrollView>
 

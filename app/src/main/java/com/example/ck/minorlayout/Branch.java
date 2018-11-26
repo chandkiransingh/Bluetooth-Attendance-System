@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Branch extends AppCompatActivity {
 
     Button cs,ec,it;
+    TextView emailid,tname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,10 +18,13 @@ public class Branch extends AppCompatActivity {
         cs = (Button) findViewById(R.id.sub1);
         ec = (Button) findViewById(R.id.ec);
         it = (Button) findViewById(R.id.it);
-
+        emailid = (TextView) findViewById(R.id.email);
+        tname = (TextView) findViewById(R.id.tname);
         Intent intent = getIntent();
         final String email = intent.getStringExtra("email");
         final String teacher = intent.getStringExtra("teacher");
+        emailid.setText(""+email.replace("<dot>","."));
+        tname.setText(""+teacher);
 
         cs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +59,7 @@ public class Branch extends AppCompatActivity {
         });
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setLogo(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 }

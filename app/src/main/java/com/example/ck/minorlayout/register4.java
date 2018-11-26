@@ -1,7 +1,6 @@
 package com.example.ck.minorlayout;
 
 import android.Manifest;
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -17,10 +16,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -47,23 +44,24 @@ public class register4 extends AppCompatActivity {
     // Write a message to the database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-    String branchcompare;
+    String branchcompare,branch;
+    TextView nodevices;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MinorTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register4);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         savedDevices = (ListView) findViewById(R.id.savedDevices);
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
-
+        nodevices = findViewById(R.id.nodevices);
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher);
+        getSupportActionBar().setLogo(R.drawable.logo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
@@ -166,13 +164,11 @@ public class register4 extends AppCompatActivity {
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
                 intent = getIntent();
-                String branch = intent.getStringExtra("branch");
+                branch = intent.getStringExtra("branch");
                 String email = intent.getStringExtra("email");
                 String subjects = intent.getStringExtra("subjects");
                 String teacher = intent.getStringExtra("teacher");
 
-
-                Log.d(TAG, "onReceive:  device name is : "+device.getName());
                 branchcompare = device.getName();
                 if(branchcompare!=null && branchcompare.length()>7)
                 {
@@ -214,12 +210,35 @@ public class register4 extends AppCompatActivity {
                             Log.d("Key and Value", "onDataChange: " + key + "and value: " + value);
                             int length = (value).length();
                             String finalvalue = value.substring(length-9,length-1);
-                            Log.d(" length ", "onDataChange: length  "+length);
-                            Log.d(finalvalue, "onDataChange: finalvalue  "+finalvalue);
-                            maps.put(key,finalvalue);
-                            // Log.d("maps", " maps values "+maps);
+
+                            branchcompare = finalvalue;
+                            if(branchcompare!=null && branchcompare.length()>7)
+                            {
+                                branchcompare = finalvalue.substring(3, 5);
+                            }
+                            else
+                            {
+                                Log.d(TAG, " device name is not valid");
+                            }
+
+
+
+
+                            if (branch.equals(branchcompare)) {
+                                maps.put(key,finalvalue);
+
+                            }
+
+                            else {
+                                Log.d(TAG, "onReceive: device name not correct");
+                                }
+
+
+
+                             Log.d("maps", " maps values "+maps);
                         }
                         List<String> listes = new ArrayList<String>(maps.values());
+                        nodevices.setText(""+listes.size());
                         ListAdapter arrayAdapter = new ArrayAdapter<String>(register4.this,android.R.layout.simple_list_item_1,listes);
                         savedDevices.setAdapter(arrayAdapter);
                     }
@@ -316,21 +335,10 @@ public class register4 extends AppCompatActivity {
     private Boolean exit = false;
     public void onBackPressed()
     {
-        //startActivity(new Intent(register4.this,MainActivity.class));
-        if (exit) {
-            finish(); // finish activity
-        } else {
-            Toast.makeText(this, "Press Back again to Exit.",
-                    Toast.LENGTH_SHORT).show();
-            exit = true;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    exit = false;
-                }
-            }, 3 * 1000);
-
-        }
-
+        finish();
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }

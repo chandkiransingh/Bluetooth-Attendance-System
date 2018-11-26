@@ -11,7 +11,7 @@ public class Subjects extends AppCompatActivity {
 
     String subjects;
     TextView textView6,textView7,textView8,textView9,textView35,textView36,textView37,textView38;
-
+    TextView emailid,tname,branches;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +25,19 @@ public class Subjects extends AppCompatActivity {
         textView36 = findViewById(R.id.textView36);
         textView37 = findViewById(R.id.textView37);
         textView38 = findViewById(R.id.textView38);
+        emailid = findViewById(R.id.email);
+        tname = findViewById(R.id.tname);
+        branches = findViewById(R.id.branch);
+
 
         final String email = intent.getStringExtra("email");
         final String teacher = intent.getStringExtra("teacher");
         final String branch = intent.getStringExtra("branch");
         Log.d("teacher value", "onCreate: teacher value"+teacher);
+
+        emailid.setText(""+email.replace("<dot>","."));
+        tname.setText(""+teacher);
+        branches.setText(""+branch);
 
         if(teacher.equals("Aarti Gautam Dinker"))
         {
@@ -256,7 +264,7 @@ public class Subjects extends AppCompatActivity {
 
         else
         {
-            Log.d(" unknown teacher", "onCreate: unknown teacher "+teacher);
+            Log.d(" unknown teacher", "unknown teacher "+teacher);
         }
 
         textView6.setOnClickListener(new View.OnClickListener() {
@@ -362,5 +370,9 @@ public class Subjects extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.logo);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
     }
 }

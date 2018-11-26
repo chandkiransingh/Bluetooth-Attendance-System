@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".Login">
 
     <com.google.android.gms.common.SignInButton
@@ -25,6 +26,8 @@
         android:layout_marginTop="72dp"
         android:layout_marginBottom="61dp"
         android:text="Login Using Your Google Account to Proceed"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/mygooglebutton"

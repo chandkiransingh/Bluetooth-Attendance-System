@@ -13,6 +13,13 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/email"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textSize="18sp" />
+        <TextView
         android:id="@+id/textView01"
         android:layout_width="193dp"
         android:layout_height="32dp"
@@ -357,11 +364,4 @@
     </RelativeLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:text="Logout" />
 </android.widget.RelativeLayout>
