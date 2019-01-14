@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/black"
-    tools:context="com.example.ck.minorlayout.attandance4"
-
-    >
+    tools:context="com.example.ck.minorlayout.attandance4">
 
     <Button
         android:id="@+id/btnONOFF"
@@ -124,7 +122,6 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/anchor"
-        android:text="Tex"
         android:textColor="@android:color/white" />
 
 </RelativeLayout>

@@ -1,6 +1,6 @@
 package com.example.ck.minorlayout;
+
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
@@ -53,12 +52,15 @@ public class AttendanceListAdapter extends ArrayAdapter<DeviceItem> {
     public ArrayList<DeviceItem> getmDevices(){
         return mDevices;
     }
+
     public void check(int position){
          Log.d("Ritik", "check: function");
          mDevices.get(position).selected=true;
          notifyDataSetChanged();
          checkindividual++;
          Log.d(TAG, "onCheckedChanged: check individual value"+checkindividual);
-
+         attandance4 obj = new attandance4();
+         obj.counting(checkindividual);
     }
+
     }

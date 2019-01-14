@@ -49,7 +49,7 @@ public class attandance4 extends AppCompatActivity {
     AttendanceListAdapter mAttendanceListAdapter;
     Button submitBtn;
     CheckBox checkBox;
-    TextView nodevices;
+    public TextView nodeviceid;
     int count;
 
         @Override
@@ -62,7 +62,8 @@ public class attandance4 extends AppCompatActivity {
         lvNewDevices = (ListView) findViewById(R.id.lvNewDevices);
         submitBtn=findViewById(R.id.submitBtn);
         checkBox= findViewById(R.id.select_all);
-        nodevices = findViewById(R.id.nodevices);
+        this.nodeviceid = findViewById(R.id.nodevices);
+          //  nodeviceid.setText("hello");
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -80,6 +81,9 @@ public class attandance4 extends AppCompatActivity {
             }
         });
 
+        //attandance4 obj = new attandance4();
+        //int hello = obj.count;
+            //  Log.d(TAG, "onCreate: take count value from method"+hello);
         mBTDevices = new ArrayList<>();
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -94,6 +98,12 @@ public class attandance4 extends AppCompatActivity {
                 enableDisableBT();
             }
         });
+
+        //register4 objec = new register4();
+        //AttendanceListAdapter obj = new AttendanceListAdapter();
+
+        //objec.check(int position);
+          //  Log.d(TAG, "onCreate: position "+position);
 
     }
 
@@ -119,6 +129,10 @@ public class attandance4 extends AppCompatActivity {
                         break;
                 }
             }
+
+
+
+
         }
     };
 
@@ -292,6 +306,7 @@ public class attandance4 extends AppCompatActivity {
                     }
                 });
             }
+
         }
     };
 
@@ -388,7 +403,7 @@ public class attandance4 extends AppCompatActivity {
                 String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 Log.d("Ritik", "submitAttendance: "+email+teacher+branch+subjects+student.Address+student.Name+date);
                 myRef.child(email).child(teacher).child(branch).child(subjects).child(student.Address).child(date).setValue(student.Name);
-                myRef.child(email).child(teacher).child(branch).child(subjects).child("TotalDate").child(date).setValue("P");
+                myRef.child(email).child(teacher).child(branch).child(subjects).child("TotalDate").child(date).setValue("ClassTaken");
                 Toast.makeText(attandance4.this,"Attendance Submitted successfully",Toast.LENGTH_SHORT).show();
             }
             else
@@ -427,9 +442,14 @@ public class attandance4 extends AppCompatActivity {
                     mAttendanceListAdapter.check(j);
             }
         }
-
-
     }
+    public void counting(int count)
+    {
+        Log.d(TAG, "counting: count"+count);
+
+       // nodeviceid.setText(""+count);
+    }
+
     public void onBackPressed() {
         finish();
         Intent a = new Intent(Intent.ACTION_MAIN);
